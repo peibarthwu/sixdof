@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const Intro = () => {
   return (
-    <div className="absolute z-1 text-left px-32 py-12 font-serif w-[700px] bottom-0">
+    <div className="absolute z-1 text-left px-8 md:px-32 py-12 font-serif w-full max-w-[700px] bottom-0 ">
       <TypeAnimation
         preRenderFirstString={false}
         sequence={[
@@ -52,7 +52,7 @@ const Intro = () => {
           fontSize: "4em",
           display: "inline-block",
           color: "yellow",
-          fontSize: "32px",
+          fontSize: "20px",
         }}
       />
     </div>

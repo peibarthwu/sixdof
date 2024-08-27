@@ -83,7 +83,7 @@ const ThreeScene = () => {
   return (
     <>
       {loading && <LoadingOverlay />}
-      <div ref={sceneRef} className="absolute top-0 left-0 w-screen h-screen" />
+      <div ref={sceneRef} className="fixed top-0 left-0 w-screen h-screen" />
     </>
   );
 };

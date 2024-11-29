@@ -17,10 +17,20 @@
 }
 
 body {
-  color: rgb(188, 0, 0);
+  color: rgb(255, 255, 255);
   font-family: Arial, sans-serif;
   font-weight: 500;
-  background: white;
+  background: rgb(15, 15, 15);
+}
+
+a {
+  color: rgb(59, 59, 59);
+  transition: transform 0.5s ease, color 0.5s ease;;
+}
+
+a:hover {
+  color: rgb(255, 255, 255);
+  z-index: 2;
 }
 
 @layer utilities {

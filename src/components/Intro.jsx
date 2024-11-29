@@ -5,11 +5,9 @@ import { TypeAnimation } from 'react-type-animation';
 
 const Intro = () => {
   const [currentStep, setCurrentStep] = useState(0); // Tracks the current line
-  console.log({ currentStep });
 
-  // Define the sequence of text and pauses (in milliseconds)
   const sequence = [
-    { text: '', delay: 3000 },
+    { text: 'Press anything.', delay: 3000 },
     { text: 'Your hands are open', delay: 3000 },
     { text: 'Your fingers are splayed', delay: 2000 },
     { text: 'Your palms are to the ceiling, to the sky', delay: 2500 },
@@ -34,24 +32,38 @@ const Intro = () => {
     { text: 'Could always hold out a little bit longer.', delay: 3000 },
   ];
 
-  // Get the current sequence based on the current step
+
   const currentSequence = [
     sequence[currentStep]?.text,
     sequence[currentStep]?.delay,
   ];
 
-  // Handle click to go to the next sequence step
-  const handleClick = () => {
-    if (currentStep < sequence.length - 1) {
-      setCurrentStep(currentStep + 1); // Move to the next step
-    }
-  };
-
+    // Handle click to go to the next sequence step
+    const handleClick = () => {
+      if (currentStep < sequence.length - 1) {
+        setCurrentStep(currentStep + 1); // Move to the next step
+      }
+    };
+  
+  
   useEffect(() => {
+    console.log(useEffect)
+    // Define the sequence of text and pauses (in milliseconds)
+ 
+  // Get the current sequence based on the current step
+
+
+
     document.addEventListener('click', handleClick);
     document.addEventListener('keydown', handleClick);
+
+     // Cleanup event listeners on unmount
+     return () => {
+      document.removeEventListener('click', handleClick);
+      document.removeEventListener('keydown', handleClick);
+    };
   
-  }, [])
+  }, [currentStep])
  
   return (
     <div className="absolute z-1 text-left px-8 md:px-32 py-12 font-serif w-full max-w-[700px] bottom-0 ">

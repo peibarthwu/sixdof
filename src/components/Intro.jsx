@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
 const Intro = () => {
@@ -47,9 +47,12 @@ const Intro = () => {
     }
   };
 
-  document.addEventListener('click', handleClick);
-  document.addEventListener('keydown', handleClick);
-
+  useEffect(() => {
+    document.addEventListener('click', handleClick);
+    document.addEventListener('keydown', handleClick);
+  
+  }, [])
+ 
   return (
     <div className="absolute z-1 text-left px-8 md:px-32 py-12 font-serif w-full max-w-[700px] bottom-0 ">
       <TypeAnimation

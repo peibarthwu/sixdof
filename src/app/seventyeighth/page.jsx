@@ -1,5 +1,8 @@
-import { Scene1 } from "@/components";
+import { ThreeScene } from "@/components";
 
 export default function Home() {
-    return (<><Scene1/></>)
+    return (<>
+    {/* 444 E 78th Street */}
+     <ThreeScene path="owensharleen.gltf" cameraPosX={-18}/>
+    </>)
 }

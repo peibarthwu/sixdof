@@ -1,12 +1,18 @@
-"use client";
+'use client';
 
-import React, { useRef, useEffect, useState } from "react";
-import * as THREE from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import LoadingOverlay from "../components/LoadingOverlay";
+import React, { useRef, useEffect, useState } from 'react';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import LoadingOverlay from '../components/LoadingOverlay';
 
-const ThreeScene = () => {
+const ThreeScene = (props) => {
+  console.log("init three scene")
+  const path = props.path;
+  const cameraPosX = props.cameraPosX ?? 0; //left right
+  const cameraPosY = props.cameraPosY ?? 20; //up down
+  const cameraPosZ = props.cameraPosZ ?? 30; //foward backward
+
   const [loading, setLoading] = useState(true);
 
   const sceneRef = useRef(null);
@@ -30,18 +36,18 @@ const ThreeScene = () => {
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.6;
+    controls.autoRotateSpeed = 1;
     controls.keys = {
-      LEFT: "ArrowLeft", //left arrow
-      UP: "ArrowUp", // up arrow
-      RIGHT: "ArrowRight", // right arrow
-      BOTTOM: "ArrowDown", // down arrow
+      LEFT: 'ArrowLeft', //left arrow
+      UP: 'ArrowUp', // up arrow
+      RIGHT: 'ArrowRight', // right arrow
+      BOTTOM: 'ArrowDown', // down arrow
     };
 
-    camera.position.set(-18, 30, 3);
-    controls.target = new THREE.Vector3(-13, 15, 0);
+    camera.position.set(cameraPosX, cameraPosY, cameraPosZ);
+    controls.target = new THREE.Vector3(cameraPosX, 10, 0); //left up forward
 
-    camera.lookAt(new THREE.Vector3(-13, 15, 0));
+    // camera.lookAt(new THREE.Vector3(-13, 15, 0));
     controls.update();
 
     const loadingManager = new THREE.LoadingManager();
@@ -51,16 +57,16 @@ const ThreeScene = () => {
     // Load GLTF Model
     const loader = new GLTFLoader(loadingManager);
     loader.load(
-      "angelinapei.gltf",
+      path,
       (gltf) => {
         gltf.scene.scale.set(10, 10, 10); // Adjust scale as needed
         const model = gltf.scene;
-        model.position.set(10, 0, -20);
+        model.position.set(0, 0, 0);
         scene.add(model);
       },
       undefined,
       (error) => {
-        console.error("Error loading GLTF model", error);
+        console.error('Error loading GLTF model', error);
       }
     );
 
@@ -75,14 +81,38 @@ const ThreeScene = () => {
 
     animate();
 
-    return () => {
-      // sceneRef.current.removeChild(renderer.domElement);
+
+    // Handle window resize
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      // Update camera aspect ratio and renderer size
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(width, height);
+
+      // Optionally re-center the canvas if needed
+      renderer.domElement.style.position = 'absolute';
+      renderer.domElement.style.top = '50%';
+      renderer.domElement.style.left = '50%';
+      renderer.domElement.style.transform = 'translate(-50%, -50%)';
     };
-  }, []);
+
+    // Listen for resize events
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [cameraPosX, cameraPosY, cameraPosZ, path]);
 
   return (
     <>
       {loading && <LoadingOverlay />}
+      
       <div ref={sceneRef} className="fixed top-0 left-0 w-screen h-screen" />
     </>
   );

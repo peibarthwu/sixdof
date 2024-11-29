@@ -1,58 +1,71 @@
-"use client";
+'use client';
 
-import { TypeAnimation } from "react-type-animation";
-import { useEffect } from "react";
+import React, { useState } from 'react';
+import { TypeAnimation } from 'react-type-animation';
 
 const Intro = () => {
+  const [currentStep, setCurrentStep] = useState(0); // Tracks the current line
+  console.log({ currentStep });
+
+  // Define the sequence of text and pauses (in milliseconds)
+  const sequence = [
+    { text: '', delay: 3000 },
+    { text: 'Your hands are open', delay: 3000 },
+    { text: 'Your fingers are splayed', delay: 2000 },
+    { text: 'Your palms are to the ceiling, to the sky', delay: 2500 },
+    { text: 'You are giving nothing.', delay: 3000 },
+    { text: 'You are empty handed.', delay: 3000 },
+    {
+      text: 'You are looking upwards at a 45 degree angle, you are looking over your shoulder, you are watching your back.',
+      delay: 3000,
+    },
+    { text: "If you behave I will show you what's in the case.", delay: 3000 },
+    {
+      text: 'A variety of stolen goods and materials for making other materials actually.',
+      delay: 3000,
+    },
+    { text: "There's not a whole lot in there.", delay: 3000 },
+    { text: 'Better not to open it.', delay: 3000 },
+    { text: 'And protect it anyhow.', delay: 3000 },
+    { text: 'Keep it close.', delay: 3000 },
+    { text: 'Clutch it tightly.', delay: 3000 },
+    { text: "Don't wanna show too much off.", delay: 3000 },
+    { text: "I'm tempted but I'll hold out a little longer.", delay: 3000 },
+    { text: 'Could always hold out a little bit longer.', delay: 3000 },
+  ];
+
+  // Get the current sequence based on the current step
+  const currentSequence = [
+    sequence[currentStep]?.text,
+    sequence[currentStep]?.delay,
+  ];
+
+  // Handle click to go to the next sequence step
+  const handleClick = () => {
+    if (currentStep < sequence.length - 1) {
+      setCurrentStep(currentStep + 1); // Move to the next step
+    }
+  };
+
+  document.addEventListener('click', handleClick);
+  document.addEventListener('keydown', handleClick);
+
   return (
     <div className="absolute z-1 text-left px-8 md:px-32 py-12 font-serif w-full max-w-[700px] bottom-0 ">
       <TypeAnimation
-        preRenderFirstString={false}
-        sequence={[
-          // Same substring at the start will only be typed out once, initially
-          "Your hands are open",
-          3000,
-          "Your fingers are splayed",
-          2000,
-          "Your palms are to the ceiling, to the sky",
-          2000,
-          "You are giving nothing.",
-          2000,
-          "You are empty handed.",
-          2000,
-          "You are looking upwards at a 45 degree angle, you are looking over your shoulder, you are watching your back, you are watching hers.",
-          2000,
-          "You have a whistle around you neck and the ref SAYS THERES NO TIME OUT WHISTLEBLOWER.",
-          2000,
-          "If you behave I will show you what's in the case.",
-          2000,
-          "A variety of stolen goods and materials for making other materials actually.",
-          2000,
-          "There's not a whole lot in there.",
-          4000,
-          "Better not to open it.",
-          1000,
-          "And protect it anyhow.",
-          1000,
-          "Keep it close.",
-          1000,
-          "Clutch it tightly.",
-          1000,
-          "Don't wanna show too much off.",
-          2000,
-          `I'm tempted but I'll hold out a little longer.`,
-          2000,
-          "Could always hold out a little bit longer.",
-          3000,
-        ]}
         wrapper="span"
         omitDeletionAnimation={true}
-        speed={200}
+        key={currentStep}
+        sequence={currentSequence}
+        speed={50}
+        repeat={0}
+        cursor={true}
+        preRenderFirstString={false}
         style={{
-          fontSize: "4em",
-          display: "inline-block",
-          color: "yellow",
-          fontSize: "20px",
+          fontSize: '4em',
+          display: 'inline-block',
+          color: 'yellow',
+          fontSize: '20px',
         }}
       />
     </div>

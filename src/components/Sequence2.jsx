@@ -10,7 +10,11 @@ const Sequence2 = () => {
   const sequence = [
     { text: "Press space to enable audio and continue.", delay: 3000 },
     {
-      text: "Connection registering closer to one hundred than zero.",
+      text: "Connection levels registering",
+      delay: 3000,
+    },
+    {
+      text: "Stop",
       delay: 3000,
     },
     {
@@ -18,8 +22,16 @@ const Sequence2 = () => {
       delay: 2500,
     },
     {
+      text: "Stop",
+      delay: 3000,
+    },
+    {
       text: ".... . / .... .- ... / .- / -.-. --- .-.. .-.. . -.-. - .. --- -. / --- ..-. / .- .-. - .. ..-. .- -.-. - ... / --- ..-. / .. -. -.-. .-. . -.. .. -... .-.. -.-- / .... .. --. .... / ...- .- .-.. ..- . / ... .-.. ..- -. --. / --- ...- . .-. / .... .. ... / ... .... --- ..- .-.. -.. . .-.",
       delay: 2000,
+    },
+    {
+      text: "Full stop",
+      delay: 3000,
     },
     {
       text: "Things from antiquity nestled nicely in those little packing peanuts.",
@@ -34,11 +46,22 @@ const Sequence2 = () => {
       delay: 2000,
     },
     { text: "Quite a lot of weight on his shoulders, you see.", delay: 2000 },
-    { text: "And I just can't imagine that he'd let me down.", delay: 2000 },
     {
       text: "Anyways so he's doing all of that while I'm predicting the future.",
       delay: 2000,
     },
+    {
+      text: "I have a 16mm gold bracelet around my ankle – an anklet as they call it – and my eyes on the ground.",
+      delay: 2000,
+    },
+    {
+      text: "The tag on my shirt's sticking out and it says PRACTICAL JOKE.",
+      delay: 2000,
+    },
+    {
+      text: "You can't see my face but I am smiling very politely down here.",
+      delay: 2000,
+    }
   ];
 
   const currentSequence = [
@@ -78,7 +101,7 @@ const Sequence2 = () => {
   }, [currentStep]);
 
   return (
-    <div className="absolute z-1 text-left mx-8 pl-2 md:mx-32 my-12 font-serif w-git bg-white max-w-[700px] bottom-0 ">
+    <div className="absolute z-1 text-left mx-8 pl-2 md:mx-32 my-12 w-git bg-[#ffffff88] backdrop-blur-sm max-w-[700px] bottom-0 ">
       <TypeAnimation
         wrapper="span"
         omitDeletionAnimation={true}

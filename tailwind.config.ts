@@ -15,7 +15,10 @@ const config: Config = {
       },
       zIndex: {
         1: "1"
-      }
+      },
+      fontFamily: {
+        'cutive-mono': ['Cutive Mono', 'sans-serif'],
+      },
     },
   },
   plugins: [],

@@ -66,7 +66,7 @@ const Intro = () => {
   }, [currentStep]);
 
   return (
-    <div className="absolute z-1 text-left mx-8 pl-2 md:mx-32 my-12 font-serif w-git bg-white max-w-[700px] bottom-0 ">
+    <div className="absolute z-1 text-left mx-8 pl-2 md:mx-32 my-12 w-fit bg-white max-w-[700px] bottom-0 ">
       <TypeAnimation
         wrapper="span"
         omitDeletionAnimation={true}

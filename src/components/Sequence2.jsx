@@ -51,15 +51,15 @@ const Sequence2 = () => {
       delay: 2000,
     },
     {
-      text: "I have a 16mm gold bracelet around my ankle – an anklet as they call it – and my eyes on the ground.",
+      text: "I have a 2mm gold bracelet around my ankle – an anklet as they say – and my eyes on the ground.",
       delay: 2000,
     },
     {
-      text: "The tag on my shirt's sticking out and it says PRACTICAL JOKE.",
+      text: "...and the tag on my shirt's sticking out and it says PRACTICAL JOKE...",
       delay: 2000,
     },
     {
-      text: "You can't see my face but I am smiling very politely down here.",
+      text: "and you can't see my face but I am smiling very politely down here.",
       delay: 2000,
     }
   ];

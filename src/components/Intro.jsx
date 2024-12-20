@@ -12,7 +12,7 @@ const Intro = () => {
     { text: "Our hands are open", delay: 3000 },
     { text: "Our fingers are splayed", delay: 2000 },
     { text: "Our palms are to the ceiling, to the sky", delay: 2500 },
-    { text: "We are giving nothing.", delay: 3000 },
+    { text: "We are giving nothing", delay: 3000 },
     { text: "We are empty handed.", delay: 3000 },
     {
       text: "We are looking upwards at a 45 degree angle, we are looking over our shoulders, we are watching our backs.",
@@ -21,6 +21,10 @@ const Intro = () => {
     { text: "If you behave we will show you what's in the case.", delay: 3000 },
     {
       text: "A variety of stolen goods and materials for making other materials actually.",
+      delay: 3000,
+    },
+    {
+      text: "Discarded trends and some old currencies",
       delay: 3000,
     },
     { text: "There's not a whole lot in there.", delay: 3000 },

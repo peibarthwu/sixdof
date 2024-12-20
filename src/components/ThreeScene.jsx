@@ -36,7 +36,7 @@ const ThreeScene = (props) => {
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 1;
+    controls.autoRotateSpeed = 0.5;
     controls.keys = {
       LEFT: 'ArrowLeft', //left arrow
       UP: 'ArrowUp', // up arrow

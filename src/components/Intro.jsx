@@ -26,7 +26,6 @@ const Intro = () => {
     { text: "There's not a whole lot in there.", delay: 3000 },
     { text: "Better not to open it.", delay: 3000 },
     { text: "And protect it anyhow.", delay: 3000 },
-    { text: "Don't wanna show too much off.", delay: 3000 },
   ];
 
   const currentSequence = [
@@ -66,7 +65,7 @@ const Intro = () => {
   }, [currentStep]);
 
   return (
-    <div className="absolute z-1 text-left mx-8 pl-2 md:mx-32 my-12 w-fit bg-white max-w-[700px] bottom-0 ">
+    <div className="absolute z-1 text-left mx-8 pl-2 md:mx-32 my-12 w-git bg-[#ffffff88] backdrop-blur-sm max-w-[700px] bottom-0 ">
       <TypeAnimation
         wrapper="span"
         omitDeletionAnimation={true}

@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
+import Link from "next/link";
 
 const Intro = () => {
   const [currentStep, setCurrentStep] = useState(0); // Tracks the current line
@@ -28,7 +29,9 @@ const Intro = () => {
       delay: 3000,
     },
     { text: "There's not a whole lot in there.", delay: 3000 },
+    // { text: "Nothing worth too much anymore.", delay: 3000 },
     { text: "Better not to open it.", delay: 3000 },
+    { text: "Leave it be.", delay: 3000 },
     { text: "And protect it anyhow.", delay: 3000 },
   ];
 
@@ -40,14 +43,14 @@ const Intro = () => {
   // Handle click to go to the next sequence step
   const handleClick = (e) => {
     if (e.code === "Space") {
-      if (currentStep < sequence.length - 1) {
+      if (currentStep < sequence.length) {
         setCurrentStep(currentStep + 1); // Move to the next step
       }
     }
   };
 
   const handleTouch = (e) => {
-    if (currentStep < sequence.length - 1) {
+    if (currentStep < sequence.length) {
       setCurrentStep(currentStep + 1); // Move to the next step
     }
   };
@@ -70,7 +73,7 @@ const Intro = () => {
 
   return (
     <div className="absolute z-1 text-left mx-8 pl-2 md:mx-32 my-12 w-git bg-[#ffffff88] backdrop-blur-sm max-w-[700px] bottom-0 ">
-      <TypeAnimation
+     {currentStep < 14 ? <TypeAnimation
         wrapper="span"
         omitDeletionAnimation={true}
         key={currentStep}
@@ -80,12 +83,16 @@ const Intro = () => {
         cursor={true}
         preRenderFirstString={false}
         style={{
-          fontSize: "4em",
-          display: "inline-block",
-          color: "black",
-          fontSize: "20px",
+          display: 'inline-block',
+          color: 'black',
+          fontSize: '20px',
+          paddingRight: '2px'
         }}
-      />
+      /> :
+       <Link href="/">
+          <span className="relative z-1 text-[20px] pr-2">Return home</span>
+      </Link>     
+      }
       <audio src="/seventysixth.mp3" ref={audio} />
     </div>
   );

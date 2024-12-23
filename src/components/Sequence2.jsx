@@ -89,7 +89,7 @@ const Sequence2 = () => {
     return () => {
       //   document.removeEventListener('click', handleClick);
       document.removeEventListener('keydown', handleClick);
-      document.addEventListener('touchstart', handleTouch);
+      document.removeEventListener('touchstart', handleTouch);
     };
   }, [currentStep]);
 

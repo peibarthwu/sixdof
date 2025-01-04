@@ -28,8 +28,11 @@ const Intro = () => {
       text: "Discarded trends and some old currencies",
       delay: 3000,
     },
+    {
+      text: "And the ashes of our dearest pet fish Fluppy who tragically died in a fire.",
+      delay: 3000,
+    },
     { text: "There's not a whole lot in there.", delay: 3000 },
-    // { text: "Nothing worth too much anymore.", delay: 3000 },
     { text: "Better not to open it.", delay: 3000 },
     { text: "Leave it be.", delay: 3000 },
     { text: "And protect it anyhow.", delay: 3000 },
@@ -93,7 +96,7 @@ const Intro = () => {
           <span className="relative z-1 text-[20px] pr-2">Return home</span>
       </Link>     
       }
-      <audio src="/seventysixth.mp3" ref={audio} />
+      <audio src="/newsound.m4a" ref={audio} />
     </div>
   );
 };

@@ -6,10 +6,9 @@ import Link from "next/link";
 
 const Sequence2 = () => {
   const [currentStep, setCurrentStep] = useState(0); // Tracks the current line
-  const audio = useRef(null);
 
   const sequence = [
-    { text: "Press space to enable audio and continue.", delay: 3000 },
+    { text: "Press space to continue.", delay: 3000 },
     {
       text: "Events will continue to proceed regardless.",
       delay: 3000,
@@ -112,9 +111,7 @@ const Sequence2 = () => {
   };
 
   useEffect(() => {
-    if (currentStep === 1) {
-      audio.current.play();
-    }
+    
     // document.addEventListener('click', handleClick);
     document.addEventListener("keydown", handleClick);
     document.addEventListener("touchstart", handleTouch);
@@ -153,7 +150,6 @@ const Sequence2 = () => {
           </span>
         </Link>
       )}
-      <audio src="/seventyeighth.mp3" ref={audio} />
     </div>
   );
 };

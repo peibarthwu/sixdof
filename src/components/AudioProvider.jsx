@@ -18,13 +18,13 @@ const AudioProvider = () => {
   const trackMap = {
     "/": "/orchestra.mp3",
     "/seventysixth": "/seventysixth.mp3",
-    "/seventyeighth": "/seventyeighth.mp3",
+    "/seventyeighth": "/bees.m4a",
   };
 
   const [animationStarted, setAnimationStarted] = useState(false); // State to control the animation start
 
   useEffect(() => {
-    if (animationStarted) {
+    if (pathname === "/" && animationStarted) {
       // GSAP Timeline for animating spans when animation is triggered
       const tl = gsap.timeline({
         onComplete: () => {
@@ -56,6 +56,17 @@ const AudioProvider = () => {
           delay: 1, // Delay fade-out a bit after fade-in
         });
       });
+    }  else if (animationStarted) { //starting on detail page edge case
+        if(pathname !== "/") {
+            gsap.to(triggerRef.current, {
+                 opacity: 0, // Fade in
+                 duration: 2,
+                 onComplete: () => {
+                   triggerRef.current.remove();
+                 },
+               });
+         }
+
     }
   }, [animationStarted]);
 
@@ -66,15 +77,14 @@ const AudioProvider = () => {
 
   const handleButtonPress = () => {
     if (!hasStarted) {
-      const firstTrack = trackMap["/"]; // Get the first track
+      const firstTrack = trackMap[pathname]; // Get the first track
       const newAudio = new Audio(firstTrack); // Create a new Audio object
       audioRef.current = newAudio; // Store it in the ref
       newAudio.play(); // Start playing the first track
       setIsPlaying(true);
       setHasStarted(true); // Mark that the first track has started
       handleButtonClick();
-      //start intro loop
-    }
+    } 
   };
 
   useEffect(() => {
@@ -90,12 +100,24 @@ const AudioProvider = () => {
 
         newAudio.onended = () => setIsPlaying(false); // Reset play state when track ends
       }
+    } else if (pathname === "/" && animationStarted){
+        audioRef.current.pause();
+        const track = "/lynch.m4a"; // Get the track based on the current pathname
+        if (track) {
+          const newAudio = new Audio(track); // Create a new Audio object
+          audioRef.current = newAudio; // Store it in the ref
+          newAudio.play(); // Start playing the new track
+          setIsPlaying(true);
+  
+          newAudio.onended = () => setIsPlaying(false); // Reset play state when track ends
+        }
     }
 
     if (navRef.current && animationStarted) {
       gsap.to(navRef.current, {
         opacity: pathname === "/" ? 1 : 0,
         duration: 1, // Fade duration
+        pointerEvents:  pathname === "/" ? "auto" : "none", // Fade duration
       });
     }
 

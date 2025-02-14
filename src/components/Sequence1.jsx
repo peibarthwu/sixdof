@@ -28,10 +28,18 @@ const Sequence1 = () => {
       delay: 3000,
     },
     {
-      text: "And the ashes of our dearest pet fish Fluppy who tragically died in a fire.",
+      text: "And the ashes of our dearest pet fish Fluppy who tragically died in a flood.",
       delay: 3000,
     },
-    { text: "There's not a whole lot in there.", delay: 3000 },
+    {
+      text: "He was the kind of fish that just minded his business until you came over to his tank. Never asked for too much. Always amused. Unassuming little fellow.",
+      delay: 3000,
+    },
+    {
+      text: "Oh poor Fluppy. We think of you often.",
+      delay: 3000,
+    },
+    { text: "Anyways there's not a whole lot in there.", delay: 3000 },
     { text: "Better not to open it.", delay: 3000 },
     { text: "Leave it be.", delay: 3000 },
     { text: "And protect it anyhow.", delay: 3000 },
@@ -73,7 +81,7 @@ const Sequence1 = () => {
 
   return (
     <div className="absolute z-1 text-left mx-8 pl-2 md:mx-32 my-12 w-git bg-[#ffffff88] backdrop-blur-sm max-w-[700px] bottom-0 ">
-     {currentStep < 14 ? <TypeAnimation
+     {currentStep < sequence.length ? <TypeAnimation
         wrapper="span"
         omitDeletionAnimation={true}
         key={currentStep}

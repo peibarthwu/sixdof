@@ -138,12 +138,6 @@ const AudioProvider = () => {
         <span data-intro className="absolute left-0 opacity-0 w-full">
           choreographed by Pei Pei Barth Wu and Angelina Hoffman
         </span>
-        <span data-intro className="absolute left-0 opacity-0 w-full">
-          Music by Jack Whitescarver
-        </span>
-        {/* <span data-intro className="absolute left-0 opacity-0 w-full">
-          Performed by Sharleen Chidiac and Owen Prum
-        </span> */}
         <span
           data-intro
           className="left-0 opacity-0 w-full text-left"

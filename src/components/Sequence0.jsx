@@ -30,7 +30,7 @@ const Sequence0 = () => {
       delay: 3000,
     },
     {
-      text: "We have therefore entrusted our precious cargo with willing participants, people to look after it and take responsibility for its safety.",
+      text: "We have therefore entrusted willing participants with our precious briefcase's fate.",
       delay: 3000,
     },
     {

@@ -42,21 +42,6 @@ a:hover {
   }
 }
 
-
-.animate-3D {
-  animation: spin 20s linear infinite;
-  transform: perspective(600px);
-  perspective-origin: 15% 55%;
-
-  
-}
-
-@keyframes spin {
-  from {
-    transform: rotateX(0deg);
-  }
-
-  to {
-    transform: rotateX(360deg);
-  }
+.intro p {
+  margin-top: 28px;
 }

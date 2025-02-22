@@ -4,10 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation"; // Import usePathname
 import Link from "next/link";
 import gsap from "gsap";
+import Sequence0 from "./Sequence0";
+import Intro from "./Intro";
 
 const AudioProvider = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audio, setAudio] = useState(null);
   const [hasStarted, setHasStarted] = useState(false); // Track whether the first track has started
   const pathname = usePathname(); // Get the current pathname
 
@@ -16,7 +17,7 @@ const AudioProvider = () => {
   const navRef = useRef(null);
   // Define a mapping of URL paths to audio tracks
   const trackMap = {
-    "/": "/orchestra.mp3",
+    "/": "/seventyeighth.mp3",
     "/seventysixth": "/seventysixth.mp3",
     "/seventyeighth": "/bees.m4a",
   };
@@ -128,41 +129,37 @@ const AudioProvider = () => {
 
   return (
     <div>
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] text-center">
+
+      {/* {introActive && <Intro />} */}
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] text-center">
         <span data-intro className="absolute left-0 opacity-0 w-full">
           Six Degrees of Freedom
         </span>
         <span data-intro className="absolute left-0 opacity-0 w-full">
-          by Pei Pei Barth Wu and Angelina Hoffman
+          choreographed by Pei Pei Barth Wu and Angelina Hoffman
         </span>
         <span data-intro className="absolute left-0 opacity-0 w-full">
           Music by Jack Whitescarver
         </span>
-        <span data-intro className="absolute left-0 opacity-0 w-full">
+        {/* <span data-intro className="absolute left-0 opacity-0 w-full">
           Performed by Sharleen Chidiac and Owen Prum
-        </span>
+        </span> */}
         <span
           data-intro
-          className="absolute left-0 opacity-0 w-full"
+          className="left-0 opacity-0 w-full text-left"
           ref={navRef}
         >
-          <Link href="/seventysixth">
-            <span className="absolute z-1 rotate-90 origin-center ml-[10px] -mt-[5px]">
-              6 degrees of freedom
-            </span>
-          </Link>
-          <Link href="/seventyeighth">
-            <span className="relative z-1">6 degrees of separation</span>
-          </Link>
+          <Sequence0/>
         </span>
       </div>
+      
       <button
         data-trigger
         className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         ref={triggerRef}
         onClick={handleButtonPress}
       >
-        Enable audio to proceed
+        Enter
       </button>
       {audioRef.current && <p>{`Now Playing: ${pathname}`}</p>}
     </div>

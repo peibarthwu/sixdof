@@ -17,7 +17,8 @@ const AudioProvider = () => {
   const navRef = useRef(null);
   // Define a mapping of URL paths to audio tracks
   const trackMap = {
-    "/": "/seventyeighth.mp3",
+    "/": "/lynch.m4a",
+    "/the-men-with-the-reins": "/lynch.m4a",
     "/seventysixth": "/seventysixth.mp3",
     "/seventyeighth": "/bees.m4a",
   };
@@ -97,6 +98,7 @@ const AudioProvider = () => {
         const newAudio = new Audio(track); // Create a new Audio object
         audioRef.current = newAudio; // Store it in the ref
         newAudio.play(); // Start playing the new track
+        newAudio.loop = true;
         setIsPlaying(true);
 
         newAudio.onended = () => setIsPlaying(false); // Reset play state when track ends
@@ -108,6 +110,7 @@ const AudioProvider = () => {
           const newAudio = new Audio(track); // Create a new Audio object
           audioRef.current = newAudio; // Store it in the ref
           newAudio.play(); // Start playing the new track
+          newAudio.loop = true;
           setIsPlaying(true);
   
           newAudio.onended = () => setIsPlaying(false); // Reset play state when track ends
@@ -129,15 +132,13 @@ const AudioProvider = () => {
 
   return (
     <div>
-
-      {/* {introActive && <Intro />} */}
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] text-center">
-        <span data-intro className="absolute left-0 opacity-0 w-full">
+      <div >
+        <span data-intro className="opacity-0 className='w-screen h-screen inset-0 flex justify-center items-center'">
           Six Degrees of Freedom
         </span>
-        <span data-intro className="absolute left-0 opacity-0 w-full">
+        {/* <span data-intro className="absolute left-0 opacity-0 w-full">
           choreographed by Pei Pei Barth Wu and Angelina Hoffman
-        </span>
+        </span> */}
         <span
           data-intro
           className="left-0 opacity-0 w-full text-left"

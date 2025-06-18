@@ -6,4 +6,5 @@ export { default as Scene1 } from "./Scene1";
 export { default as LoadingOverlay } from "./LoadingOverlay";
 export { default as Navigation } from "./Navigation";
 export { default as Intro } from "./Intro";
+export { default as Interlude } from "./Interlude";
 export {default as AudioProvider} from "./AudioProvider";

@@ -62,7 +62,7 @@ const Sequence2 = () => {
       delay: 2000,
     },
     {
-      text: 'I have a 2mm gold bracelet around my ankle – an anklet as they say – and my eyes on the ground.',
+      text: "I have a 2mm gold bracelet around my ankle – an anklet as they say – and my eyes on the ground.",
       delay: 2000,
     },
     {
@@ -111,7 +111,6 @@ const Sequence2 = () => {
   };
 
   useEffect(() => {
-    
     // document.addEventListener('click', handleClick);
     document.addEventListener("keydown", handleClick);
     document.addEventListener("touchstart", handleTouch);
@@ -139,14 +138,20 @@ const Sequence2 = () => {
           style={{
             display: "inline-block",
             color: "black",
+            backgroundColor: "red",
             fontSize: "20px",
             paddingRight: "2px",
           }}
         />
       ) : (
-        <Link href="/">
-          <span className="relative z-1 text-[20px] !color-[black] pr-2">
-            Return home
+        // <Link href="/">
+        //   <span className="relative z-1 text-[20px] !color-[black] pr-2">
+        //     Return home
+        //   </span>
+        // </Link>
+        <Link href="/the-men-with-the-reins">
+          <span className="text-[blue] font-serif underline">
+            Click to proceed
           </span>
         </Link>
       )}

@@ -20,10 +20,17 @@
 }
 
 body {
-  color: rgb(255, 255, 255);
-  font-family: Arial, sans-serif;
+  color: rgb(0, 0, 0);
+  font-family:'Times New Roman', Times, serif;
   font-weight: 500;
-  background: rgb(15, 15, 15);
+  background: rgb(255, 255, 255);
+}
+
+ul,
+ol {
+  list-style: revert;
+  margin: revert;
+  padding: revert;
 }
 
 a {
@@ -44,4 +51,15 @@ a:hover {
 
 .intro p {
   margin-top: 28px;
+}
+
+.script{
+  /* font-family: monospace; */
+}
+
+.press {
+  background-image: url('/scene2.jpeg');
+  background-size: cover;         /* scales image to cover the container */
+  background-position: center;    /* centers the image */
+  background-repeat: no-repeat;   /* prevents tiling */
 }
